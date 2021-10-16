@@ -1,0 +1,78 @@
+p#flappy {
+    color: #fff;
+    font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+p#flappy span {
+    display: inline-block;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 500;
+    -webkit-font-smoothing: antialiased;
+}
+
+p#flappy span::before,
+p#flappy span::after {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    transform-origin: left top;
+    transition: all ease-out 0.3s;
+    content: attr(data-text);
+}
+
+p#flappy span::before {
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.1, 1) skew(0deg, 20deg);
+}
+
+p#flappy span::after {
+    z-index: 2;
+    color: #684da3;
+    text-shadow: -1px 0 1px #684da3, 1px 0 1px rgba(0, 0, 0, 0.8);
+    transform: rotateY(-40deg);
+}
+
+p#flappy span:hover::before {
+    transform: scale(1.1, 1) skew(0deg, 5deg);
+}
+
+p#flappy span:hover::after {
+    transform: rotateY(-10deg);
+}
+
+p#flappy span+span {
+    margin-left: 0.3em;
+}
+
+@media (min-width: 20em) {
+    #flappy.p {
+        font-size: 2em;
+    }
+    p#flappy span::before,
+    p#flappy span::after {
+        display: block;
+    }
+}
+
+@media (min-width: 30em) {
+    p#flappy {
+        font-size: 3em;
+    }
+}
+
+@media (min-width: 40em) {
+    p#flappy {
+        font-size: 5em;
+    }
+}
+
+@media (min-width: 60em) {
+    p#flappy {
+        font-size: 8em;
+    }
+}
