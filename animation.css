@@ -32,8 +32,8 @@ p#flappy span::before {
 
 p#flappy span::after {
     z-index: 2;
-    color: #684da3;
-    text-shadow: -1px 0 1px #684da3, 1px 0 1px rgba(0, 0, 0, 0.8);
+    color: #c47916;
+    text-shadow: -1px 0 1px #c47916, 1px 0 1px rgba(0, 0, 0, 0.8);
     transform: rotateY(-40deg);
 }
 

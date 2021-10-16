@@ -12,89 +12,93 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animation.css">
     <script src="js.js"></script>
 </head>
 
-<body>
-    <!--nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Alberto Pia</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link disabled" href="#">Software Engineering <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Music</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Photography</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </div>
-          </nav-->
+<body onload="btc();greeting();quote(), setTime()">
+    <p style="font-size: 25px" id="time">1</p>
 
-    <div class="col">
+    <p style="font-size: 15px" id='bitcoin'></p>
 
-        <!-- Big ALBERTO-->
-        <div class="container">
-            <div class="row">
 
-                <p aria-label="CodePen" id="flappy">
-                    <span id="flappy" data-text="A">A</span>
-                    <span id="flappy" data-text="L">L</span>
-                    <span id="flappy" data-text="B">B</span>
-                    <span id="flappy" data-text="E">E</span>
-                    <span id="flappy" data-text="R">R</span>
-                    <span id="flappy" data-text="T">T</span>
-                    <span id="flappy" data-text="O">O</span>
-                </p>
-            </div>
+    <!-- Big ALBERTO-->
+    <div class="container justify-content-between d-flex flex-column bg-primary rounded-pill shadow-lg">
+        <div class="d-block">
+
+            <p aria-label="CodePen" id="flappy">
+                <span id="flappy" data-text="A">A</span>
+                <span id="flappy" data-text="L">L</span>
+                <span id="flappy" data-text="B">B</span>
+                <span id="flappy" data-text="E">E</span>
+                <span id="flappy" data-text="R">R</span>
+                <span id="flappy" data-text="T">T</span>
+                <span id="flappy" data-text="O">O</span>
+            </p>
         </div>
 
         <!-- Greetings -->
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-3">
-                    <img class="img-fluid rounded-circle" src="assets/profile-800x800.jpg">
+        <div class="row align-items-center">
+            <div class="col-4">
+                <h1 id='greeting'></h1>
+                <br>
+                <h2 style="font-size: 15px;" id="quote"></h2>
+                <a id="quote">
+                    <p id="quote"></p>
+                    <i onclick="quote()" id="quote" class="material-icons">refresh</i>
+                </a>
+            </div>
+            <div class="col-4">
+                <img class="img-fluid rounded-circle shadow-lg" src="assets/profile-800x800.jpg">
 
-                </div>
-                <div class="col-3">
-                    <h1 id='greeting'></h1>
+            </div>
 
-                </div>
-                <div class="col-6">
-                    <p class="text-center">Thank you for checking out my website. Here you'll find the work I'm most proud of, I hope you enjoy!</p>
-                </div>
-
+            <div class="col-4">
+                <p class="text-center">Thank you for checking out my website. Here you'll find the work I'm most proud of, I hope you enjoy!</p>
+                <br>
             </div>
         </div>
         <br>
-        <!-- Links to pages -->
         <div class="container">
-            <div class="d-flex flex-fill justify-content-between">
-                <img id="icon-link" src="assets/computer.png" class="col-2" />
-                <img id="icon-link" src="assets/piano.png" class="col-2" />
-                <img id="icon-link" src="assets/camera.png" class="col-2" />
+            <div class="d-flex flex-fill justify-content-around">
+                <a id="icon-link" href="career/programs.html" class="col-sm-1 text-center">
+                    <i id="main" class="material-icons">computer</i>
+                </a>
+                <a id="icon-link" href="career/programs.html" class="col-sm-1">
+                    <i id="main" class="material-icons">piano</i>
+                </a>
+                <a id="icon-link" href="career/programs.html" class="col-sm-1">
+                    <i id="main" class="material-icons">camera</i>
+                </a>
+
             </div>
         </div>
 
     </div>
+    </div>
+    <br>
+    <!-- Links to pages >
+        <div class="container">
+            <div class="d-flex flex-fill justify-content-between">
+                <img id="icon-link" src="assets/computer.png" class="col-sm-2" />
+                <img id="icon-link" src="assets/piano.png" class="col-sm-2" />
+                <img id="icon-link" src="assets/camera.png" class="col-sm-2" />
+            </div>
+        </div-->
+
+    </div>
 
 
-
+    <nav class="navbar fixed-bottom">
+        <a href="http://www.linkedin.com"><i></i>Linkedin</a>
+        <a href="https://github.com/aca18ap">Github</a>
+        <a href="http://www.linkedin.com">Email</a>
+    </nav>
 
 
 
