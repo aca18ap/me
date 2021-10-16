@@ -2,7 +2,7 @@ window.onload = function() {
     let today = new Date();
     let time = today.getHours();
     let greeting;
-    print(time)
+    console.log(time)
     if (time > 4 && time < 12) {
         greeting = 'Good Morning Human!'
     } else if (time > 12 && time < 19) {
