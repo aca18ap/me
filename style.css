@@ -10,13 +10,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #5343ae;
+    background-color: #eeeeee;
 }
 
 a,
 p {
     font-size: 20px;
-    color: whitesmoke;
+    color: rgb(5, 66, 4);
 }
 
 a#icon-link {
@@ -27,7 +27,7 @@ a#icon-link {
 
 a#icon-link:hover {
     text-decoration: none;
-    color: whitesmoke;
+    color: rgb(69, 18, 18);
     text-shadow: black 5px 5px 5px;
     transition: 0.5s ease-in-out;
     -webkit-transition: 0.5s ease-in-out;
@@ -35,17 +35,22 @@ a#icon-link:hover {
 }
 
 h1 {
-    color: whitesmoke;
+    color: rgb(90, 15, 15);
     font-size: xx-large;
 }
 
+h1#greeting {
+    text-align: center;
+    opacity: 1;
+}
+
 i#quote {
-    color: white;
+    color: rgb(123, 91, 91);
     cursor: pointer;
 }
 
 h2#quote {
-    color: burlywood;
+    color: rgb(37, 88, 11);
     transition: widths 2s, height 4s;
 }
 
@@ -58,15 +63,16 @@ i#main {
     font-size: 60px;
 }
 
-img#icon-link {
+img#icon-link,
+img#profile_pic {
     transition: 0.5s ease-in-out;
     -webkit-transition: 0.5s ease-in-out;
     -webkit-filter: drop-shadow(3px 3px 3px #222);
     filter: drop-shadow(3px 3px 3px #222);
 }
 
-img#icon-link:hover {
-    width: 150px;
+img#icon-link:hover,
+img#profile_pic:hover {
     -webkit-filter: drop-shadow(15px 15px 15px #222);
     filter: drop-shadow(15px 15px 15px #222);
     transition: 0.5s ease-in-out;

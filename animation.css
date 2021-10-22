@@ -55,7 +55,7 @@ p#flappy span+span {
     }
     p#flappy span::before,
     p#flappy span::after {
-        display: block;
+        display: inline;
     }
 }
 

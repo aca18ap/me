@@ -21,15 +21,18 @@
     <script src="js.js"></script>
 </head>
 
-<body onload="btc();greeting();quote(), setTime()">
+<body onload="btc();quote(), setTime(), fortuneGet(), helloGet()">
     <p style="font-size: 25px" id="time">1</p>
 
     <p style="font-size: 15px" id='bitcoin'></p>
 
+    <br>
+    <br>
+
 
     <!-- Big ALBERTO-->
-    <div class="container justify-content-between d-flex flex-column bg-primary rounded-pill shadow-lg">
-        <div class="d-block">
+    <div class="container justify-content-between d-flex flex-column rounded-pill shadow-lg h-100">
+        <div class="d-inline-block w-100 text-center">
 
             <p aria-label="CodePen" id="flappy">
                 <span id="flappy" data-text="A">A</span>
@@ -45,21 +48,22 @@
         <!-- Greetings -->
         <div class="row align-items-center">
             <div class="col-4">
-                <h1 id='greeting'></h1>
+                <h1 id='greeting'>Hello</h1>
                 <br>
+
+            </div>
+            <div class="col-4">
+                <img id="profile_pic" class="img-fluid rounded-circle shadow-lg" src="assets/profile-800x800.jpg">
+
+            </div>
+
+            <div class="col-4">
                 <h2 style="font-size: 15px;" id="quote"></h2>
                 <a id="quote">
                     <p id="quote"></p>
                     <i onclick="quote()" id="quote" class="material-icons">refresh</i>
                 </a>
-            </div>
-            <div class="col-4">
-                <img class="img-fluid rounded-circle shadow-lg" src="assets/profile-800x800.jpg">
 
-            </div>
-
-            <div class="col-4">
-                <p class="text-center">Thank you for checking out my website. Here you'll find the work I'm most proud of, I hope you enjoy!</p>
                 <br>
             </div>
         </div>
