@@ -1,7 +1,7 @@
 p#flappy {
     color: #fff;
     font-family: Avenir Next, Helvetica Neue, Helvetica, Tahoma, sans-serif;
-    font-size: 1em;
+    font-size: 0.5em;
     font-weight: 700;
 }
 
@@ -67,12 +67,12 @@ p#flappy span+span {
 
 @media (min-width: 40em) {
     p#flappy {
-        font-size: 5em;
+        font-size: 4em;
     }
 }
 
 @media (min-width: 60em) {
     p#flappy {
-        font-size: 8em;
+        font-size: 6em;
     }
 }

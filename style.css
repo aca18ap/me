@@ -3,14 +3,16 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    flex-direction: column;
+    overflow: hidden;
 }
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #eeeeee;
+    background-color: rgba(196, 121, 22, .85);
+    background-color: #e5e5f7;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #e5e5f7 50px), repeating-linear-gradient( #c76b1655, #deeb6c);
 }
 
 a,
@@ -36,7 +38,7 @@ a#icon-link:hover {
 
 h1 {
     color: rgb(90, 15, 15);
-    font-size: xx-large;
+    font-size: 3.5em;
 }
 
 h1#greeting {

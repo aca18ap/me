@@ -22,16 +22,20 @@
 </head>
 
 <body onload="btc();quote(), setTime(), fortuneGet(), helloGet()">
-    <p style="font-size: 25px" id="time">1</p>
+    <div class="container-fluid">
 
-    <p style="font-size: 15px" id='bitcoin'></p>
+        <div class="top d-flex flex-column" id="top_hud">
 
-    <br>
-    <br>
+            <p style="font-size: 25px" id="time" class="text-center">1</p>
+
+            <p style="font-size: 15px" id='bitcoin' class="text-center"></p>
+
+            <br>
+            <br>
+        </div>
 
 
-    <!-- Big ALBERTO-->
-    <div class="container justify-content-between d-flex flex-column rounded-pill shadow-lg h-100">
+        <!-- Big ALBERTO-->
         <div class="d-inline-block w-100 text-center">
 
             <p aria-label="CodePen" id="flappy">
@@ -44,56 +48,57 @@
                 <span id="flappy" data-text="O">O</span>
             </p>
         </div>
+        <div class="container rounded-pill shadow-lg bg-white">
 
-        <!-- Greetings -->
-        <div class="row align-items-center">
-            <div class="col-4">
-                <h1 id='greeting'>Hello</h1>
-                <br>
+            <!-- Greetings -->
+            <div class="row align-items-center d-flex justify-content-between">
+                <div class="col-md-4 ">
+                    <h1 id='greeting'>Hello</h1>
+                    <br>
 
+                </div>
+                <div class="col-md-4 align-items-center">
+                    <img id="profile_pic" class="img-fluid rounded-circle shadow-lg " src="assets/profile-800x800.jpg">
+
+                </div>
+
+                <div class="col-md-4">
+                    <h2 style="font-size: 15px;" id="quote"></h2>
+                    <a id="quote">
+                        <p id="quote"></p>
+                        <i onclick="quote()" id="quote" class="material-icons">refresh</i>
+                    </a>
+
+                    <br>
+                </div>
             </div>
-            <div class="col-4">
-                <img id="profile_pic" class="img-fluid rounded-circle shadow-lg" src="assets/profile-800x800.jpg">
+            <br>
+            <!--div class="container">
+                <div class="d-flex flex-fill justify-content-around">
+                    <a id="icon-link" href="career/programs.html" class="col-sm-1 text-center">
+                        <i id="main" class="material-icons">computer</i>
+                    </a>
+                    <a id="icon-link" href="career/programs.html" class="col-sm-1">
+                        <i id="main" class="material-icons">piano</i>
+                    </a>
+                    <a id="icon-link" href="career/programs.html" class="col-sm-1">
+                        <i id="main" class="material-icons">camera</i>
+                    </a>
+    
+                </div>
+            </div-->
 
-            </div>
-
-            <div class="col-4">
-                <h2 style="font-size: 15px;" id="quote"></h2>
-                <a id="quote">
-                    <p id="quote"></p>
-                    <i onclick="quote()" id="quote" class="material-icons">refresh</i>
-                </a>
-
-                <br>
-            </div>
         </div>
-        <br>
-        <div class="container">
-            <div class="d-flex flex-fill justify-content-around">
-                <a id="icon-link" href="career/programs.html" class="col-sm-1 text-center">
-                    <i id="main" class="material-icons">computer</i>
-                </a>
-                <a id="icon-link" href="career/programs.html" class="col-sm-1">
-                    <i id="main" class="material-icons">piano</i>
-                </a>
-                <a id="icon-link" href="career/programs.html" class="col-sm-1">
-                    <i id="main" class="material-icons">camera</i>
-                </a>
-
-            </div>
-        </div>
-
-    </div>
     </div>
     <br>
     <!-- Links to pages >
-        <div class="container">
-            <div class="d-flex flex-fill justify-content-between">
-                <img id="icon-link" src="assets/computer.png" class="col-sm-2" />
-                <img id="icon-link" src="assets/piano.png" class="col-sm-2" />
-                <img id="icon-link" src="assets/camera.png" class="col-sm-2" />
-            </div>
-        </div-->
+            <div class="container">
+                <div class="d-flex flex-fill justify-content-between">
+                    <img id="icon-link" src="assets/computer.png" class="col-sm-2" />
+                    <img id="icon-link" src="assets/piano.png" class="col-sm-2" />
+                    <img id="icon-link" src="assets/camera.png" class="col-sm-2" />
+                </div>
+            </div-->
 
     </div>
 
@@ -104,6 +109,7 @@
         <a href="http://www.linkedin.com">Email</a>
     </nav>
 
+    </div>
 
 
 
