@@ -73,6 +73,10 @@ img#profile_pic {
     filter: drop-shadow(3px 3px 3px #222);
 }
 
+div#mid_content {
+    padding-top: 20px;
+}
+
 img#icon-link:hover,
 img#profile_pic:hover {
     -webkit-filter: drop-shadow(15px 15px 15px #222);
