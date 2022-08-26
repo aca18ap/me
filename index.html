@@ -16,24 +16,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="global.css">
     <script src="js.js"></script>
 </head>
 
 <body onload="btc();quote(), setTime(), fortuneGet(), helloGet()">
-    <div class="container-fluid">
+    <nav class="m-0 navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="../index.html" class="navbar-brand">Alberto</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHamburger" aria-controls="navHamburger" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <div class="top d-flex flex-column" id="top_hud">
+        <div class="collapse navbar-collapse mr-0" id="navHamburger">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="../index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="career/programs.html" class="nav-link">University Coursework</a>
+                </li>
+                <li>
+                    <a href="https://www.flickr.com/people/189970441@N04/" class="nav-link">Photography</a>
+                </li>
+                <li>
+                    <a href="" class="nav-link">Music</a>
+                </li>
 
-            <p style="font-size: 25px" id="time" class="text-center">1</p>
-
-            <p style="font-size: 15px" id='bitcoin' class="text-center"></p>
-
-            <br>
-            <br>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="contacts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Contacts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="contacts">
+                        <a class="dropdown-item" href="https://www.linkedin.com/in/alberto-pia-b69b11175/">LinkedIn</a>
+                        <a class="dropdown-item" href="https://github.com/aca18ap">Github</a>
+                        <a class="dropdown-item" href="mailto:albi.pia99@gmail.com">Email</a>
+                    </div>
+                </li>
+            </ul>
         </div>
 
+
+    </nav>
+    
+    <div class="d-flex flex-column">
 
         <!-- Big ALBERTO-->
         <div class="d-inline-block w-100 text-center">
@@ -48,31 +75,36 @@
                 <span id="flappy" data-text="O">O</span>
             </p>
         </div>
-        <div class="container rounded-pill shadow-lg bg-white" id="mid_content">
+        <div class="d-flex justify-content-around align-items-center" id="mid_content">
 
             <!-- Greetings -->
-            <div class="row align-items-center d-flex justify-content-between">
-                <div class="col-md-4 ">
-                    <h1 id='greeting'>Hello</h1>
-                    <br>
+            
+            <div class="col-4 p-5">
+                <img id="profile_pic" class="img-fluid rounded-circle shadow-lg " src="assets/profile-800x800.jpg">
 
+            </div>
+
+            <div class="col-4">
+                <div class="greeting">
+                    <div class="col-4">
+                        <h1 id='greeting'>Hello</h1>
+                        <br>
+        
+                    </div>
                 </div>
-                <div class="col-md-4 align-items-center">
-                    <img id="profile_pic" class="img-fluid rounded-circle shadow-lg " src="assets/profile-800x800.jpg">
-
-                </div>
-
-                <div class="col-md-4">
+                <div class="quote">
                     <h2 style="font-size: 15px;" id="quote"></h2>
                     <a id="quote">
                         <p id="quote"></p>
                         <i onclick="quote()" id="quote" class="material-icons">refresh</i>
                     </a>
 
-                    <br>
                 </div>
+                <br>
             </div>
             <br>
+
+
             <!--div class="container">
                 <div class="d-flex flex-fill justify-content-around">
                     <a id="icon-link" href="career/programs.html" class="col-sm-1 text-center">
@@ -89,31 +121,18 @@
             </div-->
 
         </div>
+
     </div>
-    <br>
     <!-- Links to pages >
-            <div class="container">
-                <div class="d-flex flex-fill justify-content-between">
-                    <img id="icon-link" src="assets/computer.png" class="col-sm-2" />
-                    <img id="icon-link" src="assets/piano.png" class="col-sm-2" />
-                    <img id="icon-link" src="assets/camera.png" class="col-sm-2" />
-                </div>
-            </div-->
-
-    </div>
-
-
-    <nav class="navbar fixed-bottom">
-        <a href="https://www.linkedin.com/in/alberto-pia-b69b11175/"><i></i>Linkedin</a>
-        <a href="https://github.com/aca18ap">Github</a>
-        <a href="mailto:albi.pia99@gmail.com">Email</a>
-    </nav>
-
-    </div>
-
-
-
+    <div class="container">
+        <div class="d-flex flex-fill justify-content-between">
+            <img id="icon-link" src="assets/computer.png" class="col-sm-2" />
+            <img id="icon-link" src="assets/piano.png" class="col-sm-2" />
+            <img id="icon-link" src="assets/camera.png" class="col-sm-2" />
+        </div>
+    </div-->
 </body>
+
 
 
 </html>
