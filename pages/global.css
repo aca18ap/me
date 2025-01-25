@@ -1,0 +1,97 @@
+html, body {
+    height: 100%;
+    background-color: rgb(19, 3, 29);
+    color: white; /* Default text color */
+    font-family: monospace;
+}
+.profile-pic {
+    height: 100px;
+    border-radius: 50%;
+}
+
+.navbar {
+    background-color: rgb(8, 3, 12);
+}
+
+footer {
+    padding: 20px;
+    background-color: rgb(8, 3, 12);
+}
+
+footer small {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Terminal styles */
+
+.terminal {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid green;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.terminal-button.red {
+    background-color: red;
+}
+
+.terminal-button.yellow {
+    background-color: yellow;
+}
+
+.terminal-button.green {
+    background-color: green;
+}
+
+#terminal-content {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#terminalBody {
+    min-height: 300px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#terminalInputContainer {
+    margin-top: 10px;
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 10px;
+    background-color: green;
+    animation: blink 1s step-end infinite;
+}
+
+.terminal-prompt {
+    color: green; /* Color for the prompt */
+}
+
+@keyframes blink {
+    from, to {
+        background-color: transparent;
+    }
+    50% {
+        background-color: green;
+    }
+}
