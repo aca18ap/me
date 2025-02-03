@@ -40,3 +40,9 @@
 .carousel-button.next {
     right: 10px;
 }
+
+.carousel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
