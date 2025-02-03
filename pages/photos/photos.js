@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const FOLDER_MAP = {
         'architecture-carousel': 'architecture',
         'landscape-carousel': 'landscapes',
-        'city-views-carousel': 'cityviews',
+        'city-views-carousel': 'city_views',
         'animals-carousel': 'animals'
     };
 
