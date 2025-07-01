@@ -64,7 +64,10 @@
       const fromCoord = airportCoords[from];
       const toCoord = airportCoords[to];
       if (fromCoord && toCoord) {
-        const line = L.polyline([fromCoord, toCoord], { color: 'blue' }).addTo(map);
+        new L.Geodesic(
+          [[fromCoord[0], fromCoord[1]], [toCoord[0], toCoord[1]]],
+          { color: 'blue', weight: 3, opacity: 1, steps: 64 }
+        ).addTo(map);
         L.circleMarker(fromCoord, { radius: 4, color: 'green' }).addTo(map);
         L.circleMarker(toCoord, { radius: 4, color: 'red' }).addTo(map);
       } else {
