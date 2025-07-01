@@ -45,16 +45,13 @@
   const lines = text.split('\n');
 
   function getAirportCodePairs(line) {
-    const dateAndRest = line.split(',');
-    if (dateAndRest.length < 2) return [];
-
-    const routePart = dateAndRest[1].trim().split(/\s+/)[0];
-    const airports = routePart.split(/[- ]+/);
+    // extract all 3-letter codes
+    const codes = line.match(/\b[A-Z]{3}\b/g) || [];
+    // keep only codes we have coordinates for
+    const airports = codes.filter(code => airportCoords.hasOwnProperty(code));
     const pairs = [];
     for (let i = 0; i < airports.length - 1; i++) {
-      if (airports[i].length === 3 && airports[i + 1].length === 3) {
-        pairs.push([airports[i], airports[i + 1]]);
-      }
+      pairs.push([airports[i], airports[i + 1]]);
     }
     return pairs;
   }
