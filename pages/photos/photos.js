@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function initializeCarousel(carouselId) {
         const container = document.querySelector(`#${carouselId}`);
-        const folderPath = `https://aca18ap.github.io/me/assets/${FOLDER_MAP[carouselId]}`;
+        const folderPath = `https://portfolio-images.albi-pia99.workers.dev/${FOLDER_MAP[carouselId]}`;
         const imageContainer = container.querySelector('.carousel-images');
         
         try {
