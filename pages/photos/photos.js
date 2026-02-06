@@ -28,16 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.alt = `${FOLDER_MAP[carouselId]} photo ${index + 1}`;
                 img.classList.add('carousel-image');
                 img.style.position = 'absolute';
+                img.style.top = '0';
+                img.style.left = '0';
                 img.style.width = '100%';
-                img.style.height = 'auto';
+                img.style.height = '100%';
+                img.style.objectFit = 'contain';
                 img.style.opacity = '0';
                 img.style.transition = 'opacity 0.5s ease-in-out';
-                
+
                 // Only load the first image immediately
                 if (index === 0) {
                     img.src = img.dataset.src;
                     img.style.opacity = '1';
-                    img.style.position = 'relative'; // First image is not absolute
                 }
                 
                 imageContainer.appendChild(img);
