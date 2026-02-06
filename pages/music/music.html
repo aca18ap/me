@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,23 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="./programs.css">
+    <link rel="stylesheet" href="./music.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script src="../../js/terminal.js" defer></script>
-    <script src="./photos.js" defer></script>
+    <script src="./music.js" defer></script>
 
 </head>
+
 <body>
     <nav class="container-fluid navbar">
         <ul>
-            <li><img src="../../assets/profile-800x800.jpg" alt="Software Engineer illustration" class="profile-pic"></li>
+            <li><img src="../../assets/profile-800x800.jpg" alt="Software Engineer illustration" class="profile-pic">
+            </li>
             <li><strong>Alberto Pia</strong></li>
         </ul>
         <ul>
-            <li><a href="#about">About</a></li>
+            <li><a href="../index/index.html">About</a></li>
             <li><a href="../programming/programs.html">Software</a></li>
             <li><a href="../music/music.html">Music</a></li>
             <li><a href="../photos/photos.html">Photography</a></li>
@@ -29,8 +33,53 @@
     </nav>
 
     <main class="container">
-
+        <h1>Musical Career</h1>
+        <div class="terminal">
+            <div class="terminal-header">
+                <span class="terminal-button red"></span>
+                <span class="terminal-button yellow"></span>
+                <span class="terminal-button green"></span>
+            </div>
+            <div id="terminal-content">
+                <div id="terminalBody"></div>
+            </div>
+        </div>
+<br>
+        <div id="take-four" class="music-section">
+            <h2>Take Four</h2>
+            <div class="music-row">
+                <div class="music-embed">
+                    <iframe data-testid="embed-iframe" style="border-radius:12px"
+                        src="https://open.spotify.com/embed/artist/51D10OqFc9VJweUWgJXdUr?utm_source=generator"
+                        width="100%" height="352" frameBorder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
+                </div>
+                <div class="music-description">
+                    <p>I am one of the core members of the up and coming Sheffield band Take Four.
+                        We have recently released our first single - I Fled.
+                        Many more are on the way, stay tuned!</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="pthink" class="music-section">
+            <h2>Pthink - Ptarmigan</h2>
+            <div class="music-row reverse">
+                <div class="music-description">
+                    <p>I have been featured in Pthink as keys and backing vocals. My first of hopefully many more
+                        project with Brian Wilshire</p>
+                </div>
+                <div class="music-embed">
+                    <iframe style="border: 0; width: 100%; height: 470px;"
+                        src="https://bandcamp.com/EmbeddedPlayer/album=3268818630/size=large/bgcol=ffffff/linkcol=333333/tracklist=false/transparent=true/"
+                        seamless><a href="https://ptarmiganmusic1.bandcamp.com/album/ptruth">Ptruth by
+                            Ptarmigan</a></iframe>
+                </div>
+            </div>
+        </div>
     </main>
-    
+
 </body>
+
 </html>
