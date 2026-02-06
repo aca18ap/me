@@ -50,7 +50,6 @@ header {
 .carousel-images {
     width: 100%;
     height: auto;
-    display: none;
     transition: opacity 0.5s ease-in-out;
     min-height: 500px;
 }

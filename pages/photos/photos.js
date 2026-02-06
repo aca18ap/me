@@ -15,26 +15,56 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch(`${folderPath}/index.json`);
             const images = await response.json();
             
-            // Clear existing images
+            // Clear loading message
             imageContainer.innerHTML = '';
             
-            // Create image elements
+            let currentIndex = 0;
+            const imageElements = [];
+            
+            // Create image elements but don't set src yet (except first)
             images.forEach((imageName, index) => {
                 const img = document.createElement('img');
-                img.src = `${folderPath}/${imageName}`;
+                img.dataset.src = `${folderPath}/${imageName}`; // Store URL in data attribute
                 img.alt = `${FOLDER_MAP[carouselId]} photo ${index + 1}`;
                 img.classList.add('carousel-image');
-                img.loading = 'lazy';
-                img.style.display = index === 0 ? 'block' : 'none';
+                img.style.position = 'absolute';
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.5s ease-in-out';
+                
+                // Only load the first image immediately
+                if (index === 0) {
+                    img.src = img.dataset.src;
+                    img.style.opacity = '1';
+                    img.style.position = 'relative'; // First image is not absolute
+                }
+                
                 imageContainer.appendChild(img);
+                imageElements.push(img);
             });
 
-            let currentIndex = 0;
-            const imageElements = container.querySelectorAll('.carousel-image');
+            function loadImage(index) {
+                const img = imageElements[index];
+                // Only load if not already loaded
+                if (!img.src && img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+            }
 
             function showImage(index) {
                 imageElements.forEach((img, i) => {
-                    img.style.display = (i === index) ? 'block' : 'none';
+                    if (i === index) {
+                        img.style.opacity = '1';
+                        img.style.zIndex = '1';
+                        // Preload next and previous images
+                        loadImage(index);
+                        loadImage((index + 1) % imageElements.length); // Next
+                        loadImage((index - 1 + imageElements.length) % imageElements.length); // Prev
+                    } else {
+                        img.style.opacity = '0';
+                        img.style.zIndex = '0';
+                    }
                 });
             }
 
@@ -50,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } catch (error) {
             console.error(`Error loading images for ${carouselId}:`, error);
-            container.innerHTML = '<p>Error loading images</p>';
+            imageContainer.innerHTML = '<p>Error loading images</p>';
         }
     }
 
