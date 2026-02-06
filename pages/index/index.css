@@ -1,0 +1,41 @@
+.achievement-section {
+    margin-bottom: 2rem;
+}
+
+.achievement-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.achievement-row .achievement-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.achievement-row .achievement-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.achievement-row .achievement-description {
+    flex: 2;
+    min-width: 0;
+}
+
+/* Auto-alternate: even sections get reversed */
+.achievement-section:nth-of-type(even) .achievement-row {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .achievement-row {
+        flex-direction: column;
+    }
+
+    .achievement-section:nth-of-type(even) .achievement-row {
+        flex-direction: column-reverse;
+    }
+}
