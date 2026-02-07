@@ -1,45 +1,9 @@
+/* Page-specific styles for music */
+
 #take-four {
 
 }
 
 #take-four iframe {
 
-}
-
-.music-section {
-    margin-bottom: 2rem;
-}
-
-.music-row {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
-.music-row .music-embed {
-    flex: 1;
-    min-width: 0;
-}
-
-.music-row .music-description {
-    flex: 2;
-    min-width: 0;
-}
-
-.music-row.reverse .music-description {
-    flex: 2;
-}
-
-.music-row.reverse .music-embed {
-    flex: 1;
-}
-
-@media (max-width: 768px) {
-    .music-row {
-        flex-direction: column;
-    }
-
-    .music-row.reverse {
-        flex-direction: column-reverse;
-    }
 }

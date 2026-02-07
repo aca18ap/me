@@ -95,3 +95,46 @@ footer small {
         background-color: green;
     }
 }
+
+/* Reusable alternating section layout */
+.alt-section {
+    margin-bottom: 2rem;
+}
+
+.alt-row {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.alt-row .alt-media {
+    flex: 1;
+    min-width: 0;
+}
+
+.alt-row .alt-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.alt-row .alt-description {
+    flex: 2;
+    min-width: 0;
+}
+
+/* Auto-alternate: even sections get reversed */
+.alt-section:nth-of-type(even) .alt-row {
+    flex-direction: row-reverse;
+}
+
+@media (max-width: 768px) {
+    .alt-row {
+        flex-direction: column;
+    }
+
+    .alt-section:nth-of-type(even) .alt-row {
+        flex-direction: column-reverse;
+    }
+}
