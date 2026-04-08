@@ -3,10 +3,745 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0;url=pages/index/index.html">
-  <title>Redirecting...</title>
+  <title>Alberto Pia — Software Engineer</title>
+  <meta name="description" content="Mobile-first. Full-stack underneath. Alberto Pia is a software engineer building iOS and Android apps that ship to real users — currently sole mobile developer at Fathom3.">
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alberto Pia — Software Engineer">
+  <meta property="og:description" content="Mobile-first. Full-stack underneath. iOS and Android apps that ship to real users.">
+  <meta property="og:image" content="assets/profile-800x800.jpg">
+  <meta property="og:url" content="https://aca18ap.github.io/me">
+  <meta property="og:image:alt" content="Alberto Pia — Software Engineer">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (placeholder — swap for a real one later) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22sans-serif%22 font-weight=%22900%22>A</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root {
+      --bg: #f5f3ee;
+      --bg-elev: #ffffff;
+      --text: #0a0a0a;
+      --text-muted: #5c5c5c;
+      --text-soft: #8a8a8a;
+      --line: #e5e1d8;
+      --accent: #ff3d00;
+      --accent-ink: #cc2f00;
+
+      --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+      --content-width: 720px;
+      --wide-width: 1200px;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+
+      --space-1: 0.5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2rem;
+      --space-5: 3rem;
+      --space-6: 5rem;
+      --space-7: 8rem;
+
+      --transition: 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      /* Deferred — MVP ships light only. Dark mode in v2. */
+    }
+
+    /* ---------- Reset ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ---------- Skip link ---------- */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: var(--space-2);
+      padding: var(--space-1) var(--space-2);
+      background: var(--text);
+      color: var(--bg);
+      z-index: 100;
+      transition: top var(--transition);
+    }
+    .skip-link:focus { top: var(--space-2); }
+
+    /* ---------- Layout helpers ---------- */
+    .container {
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--space-3);
+    }
+    .container-wide {
+      width: 100%;
+      max-width: var(--wide-width);
+      margin: 0 auto;
+      padding: 0 var(--space-3);
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+    .nav.scrolled { border-bottom-color: var(--line); }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-2) var(--space-3);
+      max-width: var(--wide-width);
+      margin: 0 auto;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-brand::before {
+      content: '●';
+      color: var(--accent);
+      margin-right: 0.5em;
+      font-size: 0.85em;
+      display: inline-block;
+      transform: translateY(-1px);
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-3);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.9375rem;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: var(--space-7) 0 var(--space-6);
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-soft);
+      margin: 0 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--text-soft);
+    }
+    .hero-headline {
+      font-family: var(--font-sans);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin: 0 0 var(--space-4);
+    }
+    .hero-headline .break { display: block; }
+    .hero-headline .accent { color: var(--accent); }
+    .hero-subline {
+      font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+      line-height: 1.55;
+      color: var(--text-muted);
+      max-width: 36em;
+      margin: 0 0 var(--space-4);
+    }
+    .hero-subline strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* CTAs */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.875em 1.5em;
+      border-radius: 999px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      transition: transform var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .btn-primary:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--text);
+    }
+    .btn-secondary:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+    .btn svg { width: 16px; height: 16px; }
+
+    .social-links {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+      margin-top: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-soft);
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      padding: 0.35em 0.65em;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+    .social-links a:hover {
+      color: var(--text);
+      background: var(--line);
+    }
+    .social-links svg { width: 14px; height: 14px; }
+    .social-sep { opacity: 0.4; }
+
+    /* ---------- Section scaffolding ---------- */
+    section { padding: var(--space-6) 0; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin: 0 0 var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+    }
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--text-soft);
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-4);
+      max-width: 18em;
+    }
+
+    /* ---------- Work (horizontal scrolling strip) ---------- */
+    .work { padding: var(--space-6) 0; }
+    .work-header { padding: 0 var(--space-3); max-width: var(--wide-width); margin: 0 auto var(--space-4); }
+
+    .work-strip {
+      display: flex;
+      gap: var(--space-3);
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      scroll-padding: max(var(--space-3), calc((100vw - var(--wide-width)) / 2 + var(--space-3)));
+      padding: var(--space-2) max(var(--space-3), calc((100vw - var(--wide-width)) / 2 + var(--space-3))) var(--space-4);
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line) transparent;
+    }
+    .work-strip::-webkit-scrollbar { height: 6px; }
+    .work-strip::-webkit-scrollbar-track { background: transparent; }
+    .work-strip::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+
+    .project-card {
+      flex: 0 0 min(560px, 85vw);
+      scroll-snap-align: start;
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--text);
+      box-shadow: 0 12px 40px -20px rgba(0,0,0,0.25);
+    }
+    .project-card--placeholder {
+      background: transparent;
+      border-style: dashed;
+    }
+    .project-card--placeholder::after {
+      content: 'Coming soon';
+      position: absolute;
+      top: var(--space-3);
+      right: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding: 0.3em 0.7em;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .project-role { color: var(--accent); }
+
+    .project-title {
+      font-size: 1.625rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin: 0;
+    }
+    .project-blurb {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+      flex: 1;
+    }
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4em;
+      list-style: none;
+      padding: 0;
+      margin: var(--space-2) 0 0;
+    }
+    .chip {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.35em 0.7em;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    .strip-hint {
+      max-width: var(--wide-width);
+      margin: 0 auto;
+      padding: 0 var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+    }
+    .strip-hint::before { content: '→  '; }
+
+    /* ---------- About ---------- */
+    .about p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0 0 var(--space-3);
+    }
+    .about p:last-child { margin-bottom: 0; }
+
+    /* ---------- Beyond Code ---------- */
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    @media (max-width: 720px) {
+      .beyond-grid { grid-template-columns: 1fr; }
+    }
+    .beyond-tile {
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .beyond-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--text);
+    }
+    .beyond-icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-1);
+    }
+    .beyond-title {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .beyond-blurb {
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      padding: var(--space-7) 0 var(--space-6);
+    }
+    .contact-inner {
+      border-top: 1px solid var(--line);
+      padding-top: var(--space-5);
+    }
+    .contact-headline {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 var(--space-3);
+      max-width: 14em;
+    }
+    .contact-headline a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.12em;
+      transition: color var(--transition);
+    }
+    .contact-headline a:hover { color: var(--accent-ink); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: var(--space-4) 0 var(--space-5);
+      border-top: 1px solid var(--line);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+    .footer-links {
+      display: flex;
+      gap: var(--space-2);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links a { transition: color var(--transition); }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ---------- Utilities ---------- */
+    @media (max-width: 640px) {
+      .hero { padding: var(--space-5) 0 var(--space-4); }
+      section { padding: var(--space-5) 0; }
+    }
+  </style>
 </head>
 <body>
-  <p>If you are not redirected automatically, follow this <a href="pages/index/index.html">link</a>.</p>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">Alberto Pia</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#beyond">Beyond Code</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="container">
+        <p class="hero-eyebrow">Software Engineer · Sheffield, UK</p>
+        <h1 class="hero-headline" id="hero-headline">
+          <span class="break">Mobile-first.</span>
+          <span class="break">Full-stack <span class="accent">underneath.</span></span>
+        </h1>
+        <p class="hero-subline">
+          I build iOS and Android apps that ship to real users — and the systems behind them. Currently <strong>sole mobile developer at Fathom3</strong>, where I own both platforms end to end.
+        </p>
+        <div class="cta-group">
+          <a class="btn btn-primary" href="assets/Alberto_Pia_CV.pdf" download>
+            Download CV
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v9M4 8l4 4 4-4M3 14h10"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="#contact">Get in touch →</a>
+        </div>
+        <div class="social-links" aria-label="Profile links">
+          <a href="https://github.com/aca18ap" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <span class="social-sep">/</span>
+          <a href="https://www.linkedin.com/in/alberto-pia-b69b11175/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.63 13.63h-2.37V9.93c0-.88-.01-2.02-1.23-2.02-1.23 0-1.42.96-1.42 1.95v3.77H6.24V6.01h2.27v1.04h.03c.32-.6 1.09-1.23 2.24-1.23 2.4 0 2.85 1.58 2.85 3.63v4.18zM3.56 4.97a1.37 1.37 0 110-2.75 1.37 1.37 0 010 2.75zM4.75 13.63H2.37V6.01h2.38v7.62zM14.82 0H1.18C.53 0 0 .51 0 1.14v13.72C0 15.49.53 16 1.18 16h13.64c.65 0 1.18-.51 1.18-1.14V1.14C16 .51 15.47 0 14.82 0z"/></svg>
+            LinkedIn
+          </a>
+          <span class="social-sep">/</span>
+          <a href="mailto:albi.pia99@gmail.com">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1"/><path d="M1.5 4l6.5 5 6.5-5"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WORK ========== -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="work-header">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title" id="work-title">Three projects that show how I build.</h2>
+      </div>
+
+      <div class="work-strip" tabindex="0" aria-label="Scrollable list of projects">
+
+        <!-- RackEye -->
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-role">Sole iOS &amp; Android Developer</span>
+            <span>·</span>
+            <span>Fathom3 / ASafe</span>
+          </div>
+          <h3 class="project-title">RackEye</h3>
+          <p class="project-blurb">
+            Warehouse racking can fail without warning — and traditional safety inspections are slow, paper-based, and inconsistent. RackEye addresses both. IoT sensors magnetically attach to racking legs across a site, detecting impacts and their intensity in real time. The mobile apps — which I own entirely on iOS and Android — give warehouse teams a live view of every building, zone, and device, and guide inspectors through structured, question-driven racking assessments directly on the warehouse floor. Live on the App Store and Google Play, deployed in commercial warehouses, across multiple shipped major versions.
+          </p>
+          <ul class="chip-list">
+            <li class="chip">Swift</li>
+            <li class="chip">UIKit</li>
+            <li class="chip">SwiftUI</li>
+            <li class="chip">Kotlin</li>
+            <li class="chip">Jetpack Compose</li>
+            <li class="chip">REST</li>
+            <li class="chip">IoT/BLE</li>
+          </ul>
+        </article>
+
+        <!-- Bryant Research -->
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="project-role">Solo Project</span>
+            <span>·</span>
+            <span>Bryant Research</span>
+          </div>
+          <h3 class="project-title">News Scraping &amp; Classification Pipeline</h3>
+          <p class="project-blurb">
+            Bryant Research needed a reliable way to gather and process news at scale — tens of thousands of articles from sources that weren't designed to be scraped. I designed and built an end-to-end pipeline that automated article collection across paywalled and restricted sources, extracted clean article text while stripping ads, navigation, and surrounding noise, and fed the resulting corpus into a classification system that categorised 50,000+ articles by topic and type. The engineering challenge was reliability and precision: getting clean, usable text out of messy real-world web content, consistently, at scale.
+          </p>
+          <ul class="chip-list">
+            <li class="chip">Python</li>
+            <li class="chip">Django</li>
+            <li class="chip">Selenium</li>
+            <li class="chip">BeautifulSoup</li>
+            <li class="chip">HuggingFace</li>
+            <li class="chip">BERT</li>
+          </ul>
+        </article>
+
+        <!-- Logbook (placeholder) -->
+        <article class="project-card project-card--placeholder">
+          <div class="project-meta">
+            <span class="project-role">Personal Project</span>
+            <span>·</span>
+            <span>iOS</span>
+          </div>
+          <h3 class="project-title">Logbook</h3>
+          <p class="project-blurb">
+            A SwiftUI flight sim logger that draws every route you've flown as great-circle arcs across a world map. Built for myself, with 200+ hours of real sim data to populate it. A single screen done with care — the map is the whole point.
+          </p>
+          <ul class="chip-list">
+            <li class="chip">SwiftUI</li>
+            <li class="chip">MapKit</li>
+            <li class="chip">SwiftData</li>
+          </ul>
+        </article>
+
+      </div>
+
+      <p class="strip-hint">Scroll sideways to see more</p>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <p class="section-label">About</p>
+        <h2 class="section-title" id="about-title">A software engineer who takes the long way round — deliberately.</h2>
+        <p>
+          I'm a software engineer based in Sheffield with a decade of coding experience and a specialism in mobile. Right now I'm the sole developer of iOS and Android apps at Fathom3, where I own both platforms end to end — from architecture decisions to App Store releases. I've applied the same engineering standards to data pipelines, full-stack web products, and ML-adjacent work along the way — which means I'm comfortable anywhere in the stack, but I come back to mobile because that's where I do my best work.
+        </p>
+        <p>
+          I grew up in three countries — born in Italy, raised in Qatar, now a British citizen — and I think that's made me a better engineer than any framework has. I adapt fast, communicate well across teams, and I've never found a codebase I couldn't get comfortable in.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== BEYOND CODE ========== -->
+    <section class="beyond" id="beyond" aria-labelledby="beyond-title">
+      <div class="container">
+        <p class="section-label">Beyond Code</p>
+        <h2 class="section-title" id="beyond-title">Software isn't the only thing I take seriously.</h2>
+        <div class="beyond-grid">
+          <div class="beyond-tile">
+            <div class="beyond-icon" aria-hidden="true">♪</div>
+            <h3 class="beyond-title">Music</h3>
+            <p class="beyond-blurb">Performing keys and piano since I was seven — Grade 8 Distinction, band member on two released albums, and still the person who ends up at the piano at parties.</p>
+          </div>
+          <div class="beyond-tile">
+            <div class="beyond-icon" aria-hidden="true">◉</div>
+            <h3 class="beyond-title">Photography</h3>
+            <p class="beyond-blurb">I shoot architecture and landscapes whenever I travel — an eye for composition that, honestly, has made me a better UI designer.</p>
+          </div>
+          <div class="beyond-tile">
+            <div class="beyond-icon" aria-hidden="true">✈</div>
+            <h3 class="beyond-title">Aviation</h3>
+            <p class="beyond-blurb">200+ hours in flight simulation, with a particular obsession for long-haul routes and accurate procedures. One day this becomes a real licence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-inner">
+          <p class="section-label">Contact</p>
+          <h2 class="contact-headline" id="contact-title">
+            If you're hiring, shipping something interesting, or just want to chat — <a href="mailto:albi.pia99@gmail.com">send me an email</a>.
+          </h2>
+          <div class="cta-group">
+            <a class="btn btn-primary" href="assets/Alberto_Pia_CV.pdf" download>
+              Download CV
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v9M4 8l4 4 4-4M3 14h10"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="mailto:albi.pia99@gmail.com">Email me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container-wide footer-inner">
+      <span>© 2026 Alberto Pia · Built with restraint</span>
+      <ul class="footer-links">
+        <li><a href="https://github.com/aca18ap" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/alberto-pia-b69b11175/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="mailto:albi.pia99@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Nav border appears on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 8) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Keyboard scroll for the project strip (left/right arrow when focused)
+    const strip = document.querySelector('.work-strip');
+    if (strip) {
+      strip.addEventListener('keydown', (e) => {
+        const card = strip.querySelector('.project-card');
+        if (!card) return;
+        const step = card.getBoundingClientRect().width + 24;
+        if (e.key === 'ArrowRight') { strip.scrollBy({ left: step, behavior: 'smooth' }); e.preventDefault(); }
+        if (e.key === 'ArrowLeft')  { strip.scrollBy({ left: -step, behavior: 'smooth' }); e.preventDefault(); }
+      });
+    }
+  </script>
 </body>
 </html>
