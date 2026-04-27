@@ -185,33 +185,89 @@ My recommendation: **Option C**, because it makes the projects (the most importa
 
 ## 6b. Side project: Logbook (parallel 1–2 week track)
 
-**Pitch:** A SwiftUI iOS app that logs flight sim sessions and visualises every route you've flown as great-circle arcs across a world map. Built for you, populated with your real 200+ hours.
+**Pitch:** A SwiftUI iOS app that logs flight sim sessions and visualises every route you've flown as great-circle arcs across a dark satellite world map. Built for you, populated with your real 200+ hours.
 
-**Why this one:** Most distinctive of the candidates. Visually striking primary view (map + arcs). Honest, memorable interview story tied to a genuine hobby. Adds an iOS-only, MapKit-flavoured facet that RackEye and Bryant don't cover. Exists nowhere else on the internet.
+### Data model (SwiftData, iOS 17+)
 
-**MVP scope (do not exceed):**
-- One screen: a world map with all logged flights drawn as great-circle arcs
-- A second screen / sheet: list of logged flights (date, aircraft, route, duration, notes)
-- An "add flight" form: aircraft, ICAO from, ICAO to, duration, notes
-- Local storage only (SwiftData or plain JSON file). No backend, no auth, no sync.
-- Dark mode default. Considered typography. One accent colour.
-- Ships to TestFlight or shows a clean demo video on the portfolio site.
+```swift
+@Model class Flight {
+    var id: UUID
+    var date: Date
+    var aircraft: String        // e.g. "Boeing 737-800"
+    var airline: String         // e.g. "British Airways"
+    var departureICAO: String   // e.g. "EGCC"
+    var arrivalICAO: String     // e.g. "OMDB"
+    var durationMinutes: Int
+    var notes: String
+}
+```
 
-**Out of scope for v1 (resist the urge):**
-- Real flight data integration
+Coordinates are resolved at render time from the bundled airport database — never stored.
+
+### Screens
+
+1. **Map (primary, tab 1)** — full-screen dark satellite map (`.imagery(elevation: .realistic)`). All flights as great-circle arcs in `#ff3d00`. Stats strip pinned to bottom: total flights · total hours · total distance. Tap arc → callout with route + aircraft.
+2. **Flights list (tab 2)** — chronological list. Each row: `EGCC → OMDB`, aircraft, date, duration.
+3. **Flight detail** — read-only, all fields, Edit button.
+4. **Add / Edit flight (sheet)** — form with all fields. ICAO fields show green/red validation dot (found in database or not).
+
+### File structure
+
+```
+Logbook/
+├── App/
+│   ├── LogbookApp.swift
+│   └── ContentView.swift          ← TabView
+├── Models/
+│   └── Flight.swift               ← SwiftData @Model
+├── Views/
+│   ├── Map/
+│   │   ├── MapRootView.swift
+│   │   └── StatsStripView.swift
+│   ├── Flights/
+│   │   ├── FlightListView.swift
+│   │   ├── FlightRowView.swift
+│   │   └── FlightDetailView.swift
+│   └── AddEdit/
+│       ├── FlightFormView.swift
+│       └── ICAOFieldView.swift
+├── Services/
+│   ├── AirportDatabase.swift      ← loads CSV, ICAO → CLLocationCoordinate2D
+│   └── GreatCircle.swift          ← ~50 waypoints between two coords
+├── Resources/
+│   └── airports_minimal.csv       ← ICAO, lat, lon only (~400KB)
+└── Extensions/
+    └── CLLocationCoordinate2D+Distance.swift
+```
+
+### Key technical notes
+
+- **Arc drawing:** `MapPolyline` (SwiftUI MapKit, iOS 17+) with ~50 great-circle waypoints computed by `GreatCircle.swift`. Pure function: `(CLLocationCoordinate2D, CLLocationCoordinate2D) → [CLLocationCoordinate2D]`.
+- **Airport database:** Bundle a minimal CSV (ICAO, lat, lon) for ~10,000 airports (~400KB). Loaded once at launch into a `[String: CLLocationCoordinate2D]` dictionary. Same database powers the v2 searchable picker — no wasted work.
+- **Map style:** `.imagery(elevation: .realistic)` — dark satellite, native MapKit, no third-party tiles.
+- **Accent colour:** `#ff3d00` — matches the site and CV exactly.
+
+### Out of scope for v1 (resist the urge)
+- Real flight data / SimBrief integration
 - Sharing / social features
-- Export / import beyond a simple JSON dump
+- Searchable airport picker (v2 — database is already bundled)
 - Detailed per-flight stats screens
 - Cross-platform anything
 
-**Definition of done:**
-- App builds, runs, and looks intentional on a real iPhone
-- The map view is genuinely beautiful (the arcs need real care)
-- A 30-second screen recording exists for the portfolio
-- A short README on GitHub with one hero screenshot
+### Definition of done
+- App builds and runs on a real iPhone
+- Every logged flight appears as an orange arc on the dark satellite map
+- Stats strip totals are correct
+- A 30-second screen recording exists for the portfolio card
 
-**Portfolio card swap-in:**
-Once shipped, replace the "coming soon" placeholder with: title, the map screenshot as the visual, 2–3 sentence story, tech chips (SwiftUI, MapKit, SwiftData), TestFlight link or video link.
+### v2 (after portfolio card is live)
+- Searchable airport picker (same bundled CSV)
+- Per-flight mini map in detail view
+- Export route as image
+- Home screen widget
+
+### Portfolio card swap-in
+Replace the "coming soon" placeholder with: map screenshot as visual, 2–3 sentence story, tech chips (SwiftUI · MapKit · SwiftData), screen recording or TestFlight link.
 
 ---
 
