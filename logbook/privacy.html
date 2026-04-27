@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logbook — Privacy Policy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --bg:        #0a0d14;
+      --surface:   #111520;
+      --border:    #1e2535;
+      --accent:    #ff3d00;
+      --text:      #c8cfdf;
+      --text-dim:  #5a6278;
+      --text-head: #e8edf5;
+      --mono:      'DM Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+      padding: 0 1.5rem;
+    }
+
+    /* ── layout ── */
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 0 8rem;
+    }
+
+    /* ── header ── */
+    header {
+      margin-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 3rem;
+    }
+
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .arc-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .wordmark-text {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    h1 {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 300;
+      color: var(--text-head);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .meta {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── summary card ── */
+    .summary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 3.5rem;
+      font-size: 0.95rem;
+      color: var(--text-head);
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ── sections ── */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 0.97rem;
+      margin-bottom: 0.9rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    a {
+      color: var(--text-head);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.15s;
+    }
+    a:hover { text-decoration-color: var(--accent); }
+
+    /* ── divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3.5rem 0;
+    }
+
+    /* ── footer ── */
+    footer {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="wordmark">
+        <!-- Globe + arc icon, matching app visual identity -->
+        <svg class="arc-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="14" r="12" fill="#0d1829" stroke="#1e2f4a" stroke-width="1"/>
+          <!-- lat lines -->
+          <ellipse cx="14" cy="14" rx="5" ry="12" stroke="#1e3050" stroke-width="0.6" fill="none"/>
+          <line x1="2" y1="14" x2="26" y2="14" stroke="#1e3050" stroke-width="0.6"/>
+          <line x1="4" y1="9"  x2="24" y2="9"  stroke="#1e3050" stroke-width="0.5"/>
+          <line x1="4" y1="19" x2="24" y2="19" stroke="#1e3050" stroke-width="0.5"/>
+          <!-- great-circle arc -->
+          <path d="M5.5 20 Q10 4 22.5 8" stroke="#ff3d00" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <!-- endpoint dots -->
+          <circle cx="5.5"  cy="20"  r="1.4" fill="#ff3d00"/>
+          <circle cx="22.5" cy="8"   r="1.4" fill="#ff3d00"/>
+        </svg>
+        <span class="wordmark-text">Logbook</span>
+      </div>
+
+      <h1>Privacy Policy</h1>
+      <p class="meta">Effective date: <span id="date">26-04-2026</span></p>
+    </header>
+
+    <div class="summary">
+      Logbook does not collect, transmit, or sell any personal data. Everything you log stays on your device and, if you choose, in your private iCloud account. There are no analytics, no ads, and no servers of ours that ever see your data.
+    </div>
+
+    <section>
+      <h2>Data you enter</h2>
+      <p>Flights, aircraft, airlines, airports, notes, and photos you add to Logbook are stored locally on your device using Apple's SwiftData framework. This data never leaves your device except through iCloud sync, described below.</p>
+    </section>
+
+    <section>
+      <h2>iCloud sync</h2>
+      <p>If you are signed into an iCloud account, Logbook uses CloudKit to sync your data across your own devices. This sync is handled entirely by Apple. We have no access to your iCloud data — it is encrypted in transit and at rest under Apple's privacy guarantees. You can disable iCloud sync for Logbook at any time in iOS Settings → [Your Name] → iCloud.</p>
+    </section>
+
+    <section>
+      <h2>Photos</h2>
+      <p>Photos you attach to flights are stored on your device in the app's private storage container. They are included in iCloud backups if you have iCloud Backup enabled. We do not access, copy, or transmit your photos.</p>
+    </section>
+
+    <section>
+      <h2>Airline logos</h2>
+      <p>Logbook displays airline logos by making a network request to a public logo service (Clearbit) using the airline's web domain as a lookup key. No personal data is sent in this request — only a domain string (e.g. <code style="font-family: var(--mono); font-size: 0.85em; color: var(--text-head);">lufthansa.com</code>). Logos are cached on-device after the first fetch.</p>
+    </section>
+
+    <section>
+      <h2>Analytics & advertising</h2>
+      <p>Logbook contains no analytics SDKs, no crash reporters, no advertising networks, and no third-party tracking of any kind. We do not know how many people use the app or how they use it.</p>
+    </section>
+
+    <section>
+      <h2>Children</h2>
+      <p>Logbook is not directed at children under 13 and does not knowingly collect data from them. Because the app collects no data at all, there is nothing specific to protect in this regard.</p>
+    </section>
+
+    <section>
+      <h2>Changes to this policy</h2>
+      <p>If this policy changes materially, the updated version will be posted at this URL with a new effective date. We will not retroactively alter the terms under which data previously collected was handled — but given that no data is collected, this is a formality.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about this policy can be directed to <a href="mailto:hello@albertopia.com">hello@albertopia.com</a>.</p>
+    </section>
+
+    <hr />
+
+    <footer>
+      &copy; <span id="year"></span> Alberto Pia. Logbook is an independent app and is not affiliated with any airline, airport, or aviation authority.
+    </footer>
+
+  </div>
+
+  <script>
+    const now = new Date();
+    const fmt = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    document.getElementById('year').textContent = now.getFullYear();
+  </script>
+</body>
+</html>
